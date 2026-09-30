@@ -40,8 +40,8 @@ Good testbenches use both: directed tests for known edge cases, randomized tests
 
 ## Two testbench styles in this repo
 
-- **SystemVerilog testbench (ALU):** simulation-only SystemVerilog (`initial`, `task`, `$urandom`). It counts failures and calls `$fatal` at the end if there were any, so `make` fails when the ALU is wrong.
-- **cocotb testbench (FIFO, UART):** Python, described below. A failing `assert` makes `make` fail.
+- **SystemVerilog testbench (ALU):** simulation-only SystemVerilog (`initial`, `task`, `$urandom`). It counts failures and calls `$fatal` at the end if there were any, so the simulation exits with an error when the ALU is wrong.
+- **cocotb testbench (FIFO, UART):** Python, described below. A failing `assert` makes the test (and `make`) fail.
 
 Either way, a testbench that only prints values is not a test: it has to *decide* pass or fail itself.
 
@@ -103,7 +103,7 @@ Things to know:
 
 ## Running the tests
 
-Every onboarding module folder has a `Makefile` that wires Verilator (and cocotb, for the FIFO and UART) together:
+The FIFO and UART folders each have a `Makefile` that wires Verilator and cocotb together (the ALU README explains how to run its SystemVerilog testbench):
 
 ```bash
 make        # compiles the RTL and runs every test; writes the waveform (.vcd)

@@ -164,7 +164,7 @@ always_comb begin
 end
 ```
 
-If some path doesn't assign `result`, the hardware must *remember* its old value, and remembering without a clock builds a **latch**. That is almost always a bug. The fix is to assign every output on every path, usually with a `default`. Verilator's lint (`make lint`) reports these as `LATCH` or `CASEINCOMPLETE`. `'0` means "all zeros at whatever width is needed".
+If some path doesn't assign `result`, the hardware must *remember* its old value, and remembering without a clock builds a **latch**. That is almost always a bug. The fix is to assign every output on every path, usually with a `default`. Verilator's lint (`verilator --lint-only -Wall file.sv`) reports these as `LATCH` or `CASEINCOMPLETE`. `'0` means "all zeros at whatever width is needed".
 
 ### Reset styles
 
@@ -239,4 +239,4 @@ $signed(a) >>> n             // arithmetic right shift (sign fill)
 - `always_comb` for combinational logic, `always_ff` for flip-flops (no plain `always`)
 - Every output assigned on every path; every flip-flop has a reset
 - Connect ports by name: `.a(x)`, never by position
-- `make lint` should be clean before you commit
+- Lint (`verilator --lint-only -Wall file.sv`) should be clean before you commit

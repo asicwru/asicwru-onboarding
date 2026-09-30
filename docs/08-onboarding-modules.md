@@ -1,8 +1,8 @@
 # Onboarding Projects
 
-You will complete three onboarding modules. Write the RTL yourself without using AI to generate it. For each module, write the testbench, run the simulation with `make`, and open the resulting waveforms in GTKWave to check the behavior.
+You will complete three onboarding modules. Write the RTL yourself without using AI to generate it. For each module, write the testbench, run the simulation, and open the resulting waveforms in GTKWave to check the behavior.
 
-Each module folder has a skeleton with `TODO`s, a `Makefile`, and a README with the exact interface and a "done when" checklist. Those READMEs are the source of truth for what your design must do. Do the modules in this order:
+Each module folder has a skeleton with `TODO`s and a README with the exact interface and a "done when" checklist. Those READMEs are the source of truth for what your design must do. Do the modules in this order:
 
 ---
 
@@ -38,8 +38,10 @@ You practice: finite state machines, counters, protocol timing.
 
 ### Running a module
 
+See each module's README for how to run its testbench. The FIFO and UART folders have a `Makefile`:
+
 ```bash
-cd alu            # or sync_fifo / uart_transmitter
+cd sync_fifo      # or uart_transmitter
 make              # build and run the testbench, writes the waveform (.vcd)
 make lint         # static checks on the RTL
 make waves        # open the waveform in GTKWave
